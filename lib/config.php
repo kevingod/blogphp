@@ -7,7 +7,7 @@ function config_array (){
  					'user' => "root",
  					'pwd' => "",
  					'db' => "blog1234",
- 					'charset' => "uft8",);
+ 					'charset' => "utf8",);
 
  	return $array;
  }

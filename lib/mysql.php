@@ -100,9 +100,9 @@ function mGetOne($sql){
 	}
 
 	//获得结果
-	$result = mysql_fetch_array($rs)[0];
+	$row = mysqli_fetch_assoc($rs);
 
-	return 	$result;
+	return 	$row;
 }
 
 /*$sql = "select count(*) from art where cat_id=1";

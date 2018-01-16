@@ -16,18 +16,20 @@ if (empty($result)) {
 	$conn = mConn();
 
 	$cat_id = $result['cat_id'];
-	$sql = sprintf("select * from cat where cat_id = '%s'",$cat_id);
-	$rs = mQuery($sql);
+	$sql = sprintf("select * from cat where cat_id = %s ",$cat_id);
+	$rs = mGetOne($sql);
 
-	if (mysqli_num_rows($rs) == 0) {
-		//echo "不存在该栏目，无法编辑";
+	if (!$rs) {
+		
 		error("不存在该栏目，无法编辑");
-		exit();
-	}
+		exit();	
 
-	//获得结果
-	$result = mysqli_fetch_array($rs)[0];
-	var_dump($result);
+	}else{
+
+
+		//显示模板
+		include(Root.'/view/admin/catedit.html');
+	}
 }
 
 

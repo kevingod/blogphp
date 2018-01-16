@@ -7,7 +7,7 @@ require('./lib/init.php');
 $conn = mConn();
 
 //查询所有的栏目数组
-$sql = 'select * from cat ';
+$sql = 'select * from cat order by cat_id asc';
 $rs = mQuery($sql);
 
 if (!$rs) {
