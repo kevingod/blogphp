@@ -7,9 +7,11 @@ require('./lib/init.php');
 $result = $_GET;
 
 if (empty($result)) {
+
 	//echo "非法栏目，无法编辑";
 	error("非法栏目，无法编辑");
 	exit();
+
 }else{
 
 	//查询是否存在该栏目

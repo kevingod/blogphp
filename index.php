@@ -4,5 +4,4 @@
 //显示主页
 include('./view/front/index.html');
 
-
 ?>
