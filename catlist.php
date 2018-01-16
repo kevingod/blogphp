@@ -11,7 +11,8 @@ $sql = 'select * from cat ';
 $rs = mQuery($sql);
 
 if (!$rs) {
-	echo "查询栏目失败";
+	//echo "查询栏目失败";
+	error("查询栏目失败");
 	exit();
 }
 

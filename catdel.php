@@ -4,7 +4,9 @@ require('./lib/init.php');
 
 if (empty($_GET)) {
 	
-		echo "非法操作";
+		//echo "非法操作";
+		error("非法操作");
+		exit();
 
 }else{
 
@@ -22,9 +24,11 @@ if (empty($_GET)) {
 		$status = mQuery($sql);
 
 		if ($status) {
-			echo "删除栏目成功";
+			//echo "删除栏目成功";
+			succ("删除栏目成功");
 		}else{
-			echo "删除栏目失败";
+			//echo "删除栏目失败";
+			error("删除栏目失败");
 		}
 }
 

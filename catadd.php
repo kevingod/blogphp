@@ -13,7 +13,8 @@ if (empty($_POST)) {
 	//如果post有值 取出catname
 	$catname = $_POST['catname'];
 	if (empty($catname)) {
-		echo "栏目名称不能为空";
+		//echo "栏目名称不能为空";
+		error("栏目名称不能为空");
 		//查询退出
 		exit();
 	}
@@ -24,16 +25,19 @@ if (empty($_POST)) {
 	//查询是否重名
 	$status = selectHaveThisCatName($catname,$conn);
 	if ($status) {
-		echo "该栏目已经存在";
+		//echo "该栏目已经存在";
+		error("该栏目已经存在");
 		exit();
 	}
 
 	//添加到数据库
 	$result = addCatToTable($catname,$conn);
 	if ($result) {
-		echo "添加栏目成功";
+		//echo "添加栏目成功";
+		succ("添加栏目成功");
 	}else{
-		echo "添加栏目失败";		
+		//echo "添加栏目失败";	
+		error("添加栏目失败");	
 	}
 }
 
@@ -44,8 +48,6 @@ if (empty($_POST)) {
 function addCatToTable($temp_catname,$conn)
 {
 	$sql = sprintf("insert into cat (catname) values ('%s') ",$temp_catname);
-
-	////$result = mysqli_query($conn,$sql);
 
 	$result = mQuery($sql);
 	

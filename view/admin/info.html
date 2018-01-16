@@ -35,8 +35,13 @@
             </aside>
         </div>
         <div id="rside">
-            <div class="succ">成功</div>
-            <div class="danger">出错</div>
+            <!-- <div class="succ">成功</div> -->
+            <!-- <div class="danger">出错</div> -->
+            <?php if($result == "succ") {?>
+                <div class="succ"><?php echo $res?></div> 
+            <?php }else{ ?>
+                <div class="danger"><?php echo $res?></div>
+            <?php }?>
         </div>
     </div>
     <footer>

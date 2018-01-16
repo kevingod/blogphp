@@ -7,11 +7,12 @@ require('./lib/init.php');
 $result = $_GET;
 
 if (empty($result)) {
-	echo "非法栏目，无法编辑";
+	//echo "非法栏目，无法编辑";
+	error("非法栏目，无法编辑");
 	exit();
 }else{
 
-		//查询是否存在该栏目
+	//查询是否存在该栏目
 	$conn = mConn();
 
 	$cat_id = $result['cat_id'];
@@ -19,7 +20,8 @@ if (empty($result)) {
 	$rs = mQuery($sql);
 
 	if (mysqli_num_rows($rs) == 0) {
-		echo "不存在该栏目，无法编辑";
+		//echo "不存在该栏目，无法编辑";
+		error("不存在该栏目，无法编辑");
 		exit();
 	}
 
