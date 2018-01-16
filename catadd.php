@@ -1,15 +1,20 @@
 <?php
 
+//导入初始化文件
+require('./lib/init.php');
+
 if (empty($_POST)) {
-	# code...
-	include('./view/admin/catadd.html');
+	
+	//导入模板
+	include(Root.'/view/admin/catadd.html');
+
 }else{
 
 	//如果post有值 取出catname
 	$catname = $_POST['catname'];
 	if (empty($catname)) {
-		# code...
 		echo "栏目名称不能为空";
+		//查询退出
 		exit();
 	}
 
@@ -19,7 +24,6 @@ if (empty($_POST)) {
 	//查询是否重名
 	$status = selectHaveThisCatName($catname,$conn);
 	if ($status) {
-		# code...
 		echo "该栏目已经存在";
 		exit();
 	}
@@ -41,7 +45,9 @@ function addCatToTable($temp_catname,$conn)
 {
 	$sql = sprintf("insert into cat (catname) values ('%s') ",$temp_catname);
 
-	$result = mysqli_query($conn,$sql);
+	////$result = mysqli_query($conn,$sql);
+
+	$result = mQuery($sql);
 	
 	return $result;
 }
@@ -53,39 +59,17 @@ function addCatToTable($temp_catname,$conn)
 **/
 function selectHaveThisCatName($temp_catname,$conn)
 {
-	//$txt = sprintf("There are %u million cars in %s.",$number,$str);
-	//$sql = "select * from cat where catname = [$temp_catname]";
-
 	$sql = sprintf("select * from cat where catname = '%s';",$temp_catname);
-	//echo $sql;
 
-	$rs = mysqli_query($conn,$sql);
+	$rs = mQuery($sql);
 
 	if (mysqli_num_rows($rs) > 0) {
-		# code...
 		return true;
 	}else{
 		return false;
 	}
 }
 
-
-/**
-*	连接数据库
-*
-**/
-function mConn()
-{
-	//ip 账户 密码
-	static $conn = null;
-	$conn = mysqli_connect('127.0.0.1','root','');
-
-	//使用 blog1234数据库
-	mysqli_query($conn, 'use blog1234');
-	mysqli_query($conn, 'set names utf8');
-
-	return $conn;	
-}
 
 ?>
 
