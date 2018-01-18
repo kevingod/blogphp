@@ -79,7 +79,9 @@ function mGetAll($sql){
 	}
 
 	$data = array();
-	while ($row = mysqli_fectch_assoc($rs)){	
+
+	//将查询出来的内容放进一个数组里
+	while($row = mysqli_fetch_assoc($rs)) {
 		$data[] = $row;
 	}
 
