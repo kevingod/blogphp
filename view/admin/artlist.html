@@ -49,12 +49,10 @@
                 <?php foreach($art_array as $obj) { ?>
 
                         <tr>
-                            <td><?php echo $obj['art_id']?></td>
-                            <td>2013/12/03</td>
-                            <td><a href="#"><?php $show_content = $obj['content']; 
-                            $show_content = mb_substr($show_content,0,10);
-                            echo $show_content ?></a></td>
-                            <td>心情随笔</td>
+                            <td><?php echo $obj['art_id'] ?></td>
+                            <td><?php echo $cat_array[$obj['art_id']]['date'] ?></td>
+                            <td><a href="#"><?php echo $obj['title'] ?></a></td>
+                            <td><?php echo $cat_array[$obj['art_id']]['catname'] ?></td>
                             <td><span class="badge">0</span></td>
                             <td>已发布</td>
                         </tr>
